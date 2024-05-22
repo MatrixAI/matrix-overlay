@@ -36,7 +36,7 @@
       in
       {
         devShells.default = with pkgs; mkShell {
-          inputsFrom = [
+          buildInputs = [
             polykey-cli
           ];
         };
