@@ -59,11 +59,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1716348987,
-        "narHash": "sha256-LngKluHC5wjIMOB3r5CSHcKx8sZpCytqpWZaMYQ9ozc=",
+        "lastModified": 1718605364,
+        "narHash": "sha256-1JVAPfZ3s47ehaAaDY22UIAeYcxlB/5CSY4VYHPKf34=",
         "owner": "MatrixAI",
         "repo": "Polykey-CLI",
-        "rev": "553b845dee0f2252b84cf643928fee42dec12b50",
+        "rev": "5973090c8fab456d048bac93b378af712dc5590f",
         "type": "github"
       },
       "original": {
