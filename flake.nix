@@ -9,13 +9,13 @@
   outputs = { nixpkgs, flake-utils, ... }:
     flake-utils.lib.eachSystem [ "x86_64-linux" ] (system:
       let
-        overlay = final: prev: { };
-        pkgs = nixpkgs.legacyPackages.${system}.extend overlay;
-        packages = import ./packages.nix { inherit system; };
+        pkgs = nixpkgs.legacyPackages.${system};
+        packages = pkgs.callPackage ./packages.nix { };
+        overlay = final: prev: packages;
       in {
-        legacyPackages = pkgs;
-        lib = pkgs.lib;
         packages = packages;
+        legacyPackages = pkgs.extend overlay;
+        lib = nixpkgs.lib;
       });
 }
 
