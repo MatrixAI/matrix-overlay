@@ -7,13 +7,15 @@
   };
 
   outputs = { nixpkgs, flake-utils, ... }:
-    flake-utils.lib.eachSystem [ "x86_64-linux" ] (system: 
+    flake-utils.lib.eachSystem [ "x86_64-linux" ] (system:
       let
-        overlay = final: prev: (import ./packages.nix) { inherit system; };
+        overlay = final: prev: { };
         pkgs = nixpkgs.legacyPackages.${system}.extend overlay;
-      in
-      {
+        packages = import ./packages.nix { inherit system; };
+      in {
         legacyPackages = pkgs;
+        lib = pkgs.lib;
+        packages = packages;
       });
 }
 
