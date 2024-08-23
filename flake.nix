@@ -9,7 +9,10 @@
   outputs = { self, nixpkgs }:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
       packages = final: prev: (pkgs.callPackage ./packages.nix { });
       nixpkgs-matrix = pkgs.extend packages;
     in {
