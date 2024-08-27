@@ -17,7 +17,7 @@
       nixpkgs-matrix = pkgs.extend packages;
     in {
       legacyPackages.${system} = nixpkgs-matrix;
-      lib = nixpkgs.lib;
+      lib = pkgs.lib;
     };
 }
 
