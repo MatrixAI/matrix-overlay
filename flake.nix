@@ -9,15 +9,16 @@
   outputs = { self, nixpkgs }:
     let
       system = "x86_64-linux";
-      pkgs = import nixpkgs {
+      nixpkgs_ = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
       };
-      packages = final: prev: (pkgs.callPackage ./packages.nix { });
-      nixpkgs-matrix = pkgs.extend packages;
+      packages = final: prev: (nixpkgs_.callPackage ./packages.nix { });
+      pkgs = nixpkgs_.extend packages;
     in {
-      legacyPackages.${system} = nixpkgs-matrix;
-      lib = pkgs.lib;
+      legacyPackages.${system} = pkgs;
+      nixpkgs = nixpkgs_;
+      lib = nixpkgs_.lib;
     };
 }
 
