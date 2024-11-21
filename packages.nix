@@ -2,5 +2,5 @@
 
 lib.makeExtensible (self: {
   polykey-cli = (builtins.getFlake
-    "github:MatrixAI/Polykey-CLI/740c72d9c6d332f68a65af1e14b1aa5ae25cc274").packages.${system}.default;
+    "github:MatrixAI/Polykey-CLI/73e25d8aa49873f7b6ea1be38f37408649c6c24e").packages.${system}.default;
 })
